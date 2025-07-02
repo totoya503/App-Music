@@ -5,6 +5,7 @@ import NowPlaying from "./components/NowPlaying";
 import PlayerBar from "./components/PlayerBar";
 import Login from "./auth/Login";
 import { BrowserRouter, Route, Router, Routes } from "react-router";
+import styled from "styled-components";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -15,24 +16,32 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
-        <HeaderBar />
-      <div style={{ display: "flex", flex: 1 }}>
-        <div style={{ flex: 3 }}>
-          <MusicSection />
-        </div>
-        <div style={{ flex: 1 }}>
-          <NowPlaying currentTrack={currentTrack} />
-        </div>
-      </div>
-      <PlayerBar />
-    </div>
-    <Routes>
-      
-    </Routes>
+          <Layout>
+            <HeaderBar />
+            <MainContent>
+              <MusicSection />
+              <NowPlaying currentTrack={currentTrack} />
+            </MainContent>
+            <PlayerBar />
+          </Layout>
+      <Routes>
+        
+      </Routes>
     </BrowserRouter>
     </>
   );
 }
 
 export default App;
+
+const Layout = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+`;
+
+const MainContent = styled.div`
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+`;

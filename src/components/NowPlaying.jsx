@@ -1,15 +1,33 @@
+import styled from "styled-components";
+
 export default function NowPlaying({ currentTrack }) {
   return (
-    <aside style={{ backgroundColor: "#1e1e1e", padding: "10px", color: "white" }}>
-      <h4>Ahora suena:</h4>
+    <Aside>
+      <Title>Ahora suena:</Title>
       {currentTrack ? (
-        <div>
-          <p>{currentTrack.name}</p>
+        <TrackInfo>
+          <p><strong>{currentTrack.name}</strong></p>
           <p>{currentTrack.artist}</p>
-        </div>
+        </TrackInfo>
       ) : (
-        <p>Nada reproduciéndose</p>
+        <p>Ninguna canción en reproducción</p>
       )}
-    </aside>
+    </Aside>
   );
 }
+
+const Aside = styled.aside`
+  background-color: #2c2c2c;
+  color: white;
+  padding: 20px;
+  flex: 1;
+  height: 100%;
+`;
+
+const Title = styled.h3`
+  margin-bottom: 10px;
+`;
+
+const TrackInfo = styled.div`
+  margin-top: 10px;
+`;
