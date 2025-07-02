@@ -21,7 +21,7 @@ export default function Login({ setUser }) {
     );
 }
 
-// 🧩 Estilos
+// Estilos
 const Container = styled.div`
     height: 100vh;
     display: flex;

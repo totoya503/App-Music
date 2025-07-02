@@ -1,4 +1,4 @@
-// src/api/spotify.js
+//ojala no se me hubiera ocurrido usarla xd
 import axios from "axios";
 
 const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
@@ -24,20 +24,32 @@ export async function getAccessToken() {
   return token;
 }
 
-// 2. Obtener canciones populares (por ejemplo: top 10 de un género)
-export async function getTopTracks() {
-  if (!token) {
-    await getAccessToken();
-  }
+// 2. Obtener canciones 
+export async function searchTracks(query) {
 
-  const res = await axios.get(
-    "https://api.spotify.com/v1/browse/new-releases?limit=10",
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+    if (!token) {
+        await getAccessToken();
     }
-  );
 
-  return res.data.albums.items;
+    //console.log("Token:", token)
+
+    //aca se puede modificar el limite (lo puse en 10 por si acaso)
+    try{
+    const res = await axios.get(
+    `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track&limit=10`,
+    {
+    headers: {
+    Authorization: `Bearer ${token}`,
+    },
+    }
+    );
+
+    //console.log("Respuesta de spotify:", res.data);
+
+    return res.data.tracks.items;
+    }
+    catch(error){
+        //console.error("Error al buscar canciones:", error);
+        return [];
+    }
 }
