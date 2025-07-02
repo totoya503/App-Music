@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export default function PlayerBar({currentTrack}) {
+    {{/* mas botones? no es necesario igual la API hasta donde se ni retorna duracion de la cancion */}}
     return (
     <Footer>
         <TrackInfo>

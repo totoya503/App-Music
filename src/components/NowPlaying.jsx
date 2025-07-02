@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export default function NowPlaying({ currentTrack }) {
+    {{/* hubiera querido meter mas informacion pero spotify no retorna tanta data */}}
     return (
         <Aside>
         <Title>Ahora suena:</Title>
